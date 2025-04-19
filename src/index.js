@@ -1,15 +1,30 @@
 import React from 'react';
+import { 
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider
+} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      {/* You can add more routes here if needed */}
+      {/* Example: <Route path="updates" element={<Updates />} /> */}
+      <Route path="/" element={<Pathway/>}></Route>
+      <Route path="/tasks" element={<Tasks/>}></Route>
+    </Route>
+  )
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
